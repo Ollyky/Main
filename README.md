@@ -1,2 +1,2 @@
 # Main
-My Personal Server
+Post Install fedora 44 minimal install.
