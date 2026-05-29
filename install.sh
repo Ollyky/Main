@@ -15,7 +15,7 @@
 # ║  - XKB ABNT2: XKB_DEFAULT_LAYOUT=br / MODEL=abnt2 / VARIANT=abnt2     ║
 # ║  - Botões semáforo: themerc-override com cores exatas do macOS Sonoma  ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
-
+# SCRIPT ORIGINAL!
 # ─────────────────────────────────────────────────────────────────────────
 # BLOCO 0: CONFIGURAÇÃO GLOBAL
 # ─────────────────────────────────────────────────────────────────────────
@@ -763,13 +763,13 @@ instalar_whitesur_gtk() {
         return 1
     fi
 
-    # --silent-mode: suprime todos os prompts interativos.
+    # Executa o instalador padrão conforme o README oficial do WhiteSur GTK.
     # Instala TODAS as variantes (light + dark) em ${HOME}/.themes/.
     # rc.xml referencia WhiteSur-Dark para decorações de janela.
     # env HOME=: garante home correto mesmo rodando via sudo.
     log_info "Executando install.sh como ${USUARIO_REAL}..."
     if sudo -u "${USUARIO_REAL}" env HOME="${HOME_REAL}" \
-        bash -c "cd '${tmp_dir}' && ./install.sh --silent-mode" \
+        bash -c "cd '${tmp_dir}' && ./install.sh" \
         >> "${LOG_FILE}" 2>&1; then
         log_ok "WhiteSur GTK Theme instalado em ${HOME_REAL}/.themes/"
     else
@@ -795,11 +795,12 @@ instalar_whitesur_icons() {
         return 1
     fi
 
-    # --silent-mode: instala em ~/.local/share/icons/ sem prompts.
+    # Executa o instalador padrão conforme o README oficial do WhiteSur Icon Theme.
+    # Instala em ~/.local/share/icons/ sem prompts interativos.
     # Inclui ícones de apps, pastas, MIME types E cursores (XCURSOR_THEME=WhiteSur).
     log_info "Executando install.sh como ${USUARIO_REAL}..."
     if sudo -u "${USUARIO_REAL}" env HOME="${HOME_REAL}" \
-        bash -c "cd '${tmp_dir}' && ./install.sh --silent-mode" \
+        bash -c "cd '${tmp_dir}' && ./install.sh" \
         >> "${LOG_FILE}" 2>&1; then
         log_ok "WhiteSur Icon Theme instalado em ${HOME_REAL}/.local/share/icons/"
     else
